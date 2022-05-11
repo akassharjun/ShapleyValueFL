@@ -7,19 +7,30 @@ A pip library for computing the marginal contribution (Shapley Value) for each c
 from svfl.svfl import calculate_sv
 
 models = {
-    "CLIENT ID 1" : Model(),
-    "CLIENT ID 2" : Model()
+    "client-id-1" : ModelUpdate(),
+    "client-id-2" : ModelUpdate().
+    "client-id-3" : ModelUpdate().
 }
 
 def evaluate_model(model):
-    # compute accuracy
-    return accuracy
+    # function to compute evaluation metric, ex: accuracy, precision
+    return metric
 
 def fed_avg(models):
-    # average the model updates, FedAvg is an example
+    # function to average the model updates, FedAvg for example
     return model
 
-calculate_sv(models, evaluate_model, fed_avg)
+# returns a key value pair with the client identifier and it's respective Shapley Value
+contribution_measure = calculate_sv(models, evaluate_model, fed_avg)
 ```
 
-Send the model updates and client identifies as a key value pair
+## Future Work
+
+- Built-in support for standard averaging methods like FedAvg, & FedProx.
+
+
+
+## Feedback
+Any feedback/corrections/additions are welcome:
+
+If this was helpful, please leave a star on the [github](https://github.com/akassharjun/ShapleyValueFL) page.
