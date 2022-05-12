@@ -8,8 +8,8 @@ from svfl.svfl import calculate_sv
 
 models = {
     "client-id-1" : ModelUpdate(),
-    "client-id-2" : ModelUpdate().
-    "client-id-3" : ModelUpdate().
+    "client-id-2" : ModelUpdate(),
+    "client-id-3" : ModelUpdate(),
 }
 
 def evaluate_model(model):
