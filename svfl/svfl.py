@@ -1,7 +1,6 @@
 import copy
 import itertools
 
-
 def calculate_sv(models, model_evaluation_func, averaging_func):
     """
     Computes the Shapley Value for clients
@@ -16,39 +15,44 @@ def calculate_sv(models, model_evaluation_func, averaging_func):
 
     """
 
-    # find out all the possible permutations.
+    # generate possible permutations
     all_perms = list(itertools.permutations(list(models.keys())))
-    perm_data = []
+    marginal_contributions = []
+    # history map to avoid retesting the models
+    history = {}
 
     for perm in all_perms:
         perm_values = {}
         local_models = {}
+
         for client_id in perm:
-            # model is deep copied in order to not affect the actual model.
             model = copy.deepcopy(models[client_id])
             local_models[client_id] = model
 
-            current_value = model_evaluation_func(averaging_func(local_models))
+            # get the current index eg: (A,B,C) on the 2nd iter, the index is (A,B)
+            if len(perm_values.keys()) == 0:
+                index = (client_id,)
+            else:
+                index = tuple(sorted(list(tuple(perm_values.keys()) + (client_id,))))
 
-            new_value = current_value - sum(perm_values.values())
+            if index in history.keys():
+                current_value = history[index]
+            else:
+                current_value = evaluate_contribution_measure(model, evaluation_dataloader)
+                history[index] = current_value
 
-            # if it's greater than 0, there is no improvement over it.
-            if new_value < 0:
-                new_value = 0
+            perm_values[client_id] = max(0, current_value - sum(perm_values.values()))
 
-            perm_values[client_id] = new_value
+        marginal_contributions.append(perm_values)
 
-        perm_data.append(perm_values)
+    sv = {client_id: 0 for client_id in models.keys()}
 
-    sv = {client_id:0 for client_id in models.keys()}
-
-    for item in perm_data:
-        # sum all the values in each permutation for the respective client.
-        for key, value in item.items():
+    # sum the marginal contributions
+    for perm in marginal_contributions:
+        for key, value in perm.items():
             sv[key] += value
 
-    # average to compute the shapley value
-    for key, value in sv.items():
-        sv[key] = sv[key] / len(perm_data)
+    # compute the average marginal contribution
+    sv = {key: value / len(marginal_contributions) for key, value in sv.items()}
 
     return sv
