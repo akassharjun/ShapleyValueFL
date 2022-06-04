@@ -17,8 +17,8 @@ The $i-th$ participant’s Shapley Value $\phi(i)$ is defined as
 
 $$\phi(i) = \sum_{S\subset N \backslash \{i\}} \frac{|S|!(N-|S|-1)!}{|N|!}(v(S\cup \{i\}) - v(S))$$
 
-The marginal contribution of the $i-th$ participant is defined as $
-(v(S \cup \{i\}) - v(S))$ when they join this coalition.
+The marginal contribution of the $i-th$ participant is defined as
+$(v(S \cup \{i\}) - v(S))$ when they join this coalition.
 
 Let's see this equation in action, consider a Federated Learning environment with three clients, so $N = \{0, 1, 2\}$. We list the contribution of each subset within this coalition. Let's consider the contribution to be measured in terms of model accuracy.
 

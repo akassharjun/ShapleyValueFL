@@ -38,7 +38,8 @@ def calculate_sv(models, model_evaluation_func, averaging_func):
             if index in history.keys():
                 current_value = history[index]
             else:
-                current_value = evaluate_contribution_measure(model, evaluation_dataloader)
+                model = averaging_func(local_models)
+                current_value = model_evaluation_func(model)
                 history[index] = current_value
 
             perm_values[client_id] = max(0, current_value - sum(perm_values.values()))

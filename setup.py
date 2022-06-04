@@ -5,8 +5,8 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='svfl',
-    version='0.1.2',
-    description='A package for computing the average marginal contribution (Shapley Value) for every client in a Federated Learning environment',
+    version='0.1.0',
+    description='A package for computing the average marginal contribution (Shapley Value) for each client in a Federated Learning environment',
     url='https://github.com/akassharjun/ShapleyValueFL',
     author='Akassharjun Shanmugarajah',
     author_email='akassharjun@gmail.com',
