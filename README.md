@@ -47,7 +47,13 @@ $v(\{0,1,2\}) = 90$
 
 The arrow signifies the order in which each client joins the coalition. Consider the
 first iteration $0 \leftarrow 1 \leftarrow 2$, we calculate the marginal contribution of each client using the
-above equation. Client 0's is $v(\{0\}) = 40$. Client 1's is $v(\{0, 1\}) - v(\{0\}) = 30$. Finally Client 2's marginal contribution is given as $v(\{0, 1, 2\}) - v(\{0, 1\}) - v(\{0\}) = 20$. The marginal contribution is calculated for each permutation
+above equation. 
+
+- Client 0's marginal contribution is given as $v(\{0\}) = 40$. 
+- Client 1's marginal contribution is given as $v(\{0, 1\}) - v(\{0\}) = 30$. 
+- Client 2's marginal contribution is given as $v(\{0, 1, 2\}) - v(\{0, 1\}) - v(\{0\}) = 20$. 
+  
+The marginal contribution is calculated for each permutation
 likewise, and the Shapley Value is derived by averaging all of these marginal contributions.
 
 ## Usage
