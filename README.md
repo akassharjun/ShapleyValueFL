@@ -13,7 +13,7 @@ A pip library for computing the marginal contribution (Shapley Value) for each c
 The Shapley Value is a game theory concept that explores how to equitably distribute rewards and costs among members of a coalition. It is extensively used in incentive mechanisms for Federated Learning to fairly distribute rewards to clients based on their contribution to the system.
 
 Let $v(S)$ where $S\subset N$ is defined as the contribution of the model collaboratively trained by the subset $S$. $N$ is a set of all the participants in the system.
-The $i-th$ participant’s Shapley Value $\phi (i)$ is defined as
+The i-th participant’s Shapley Value $\phi(i)$ is defined as
 
 $$\phi(i) = \sum_{S\subset N \backslash \{i\}} \frac{|S|!(N-|S|-1)!}{|N|!}(v(S\cup \{i\}) - v(S))$$
 
