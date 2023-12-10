@@ -42,7 +42,7 @@ $v(\{0,1,2\}) = 90$
 | $2 \leftarrow 0 \leftarrow 1$ | 0  | 10 | 80 |
 | $2 \leftarrow 1 \leftarrow 0$ | 5  | 5 | 80 |
 | $Sum$ | 100  | 180 | 260 |
-| $\phi(i)$ | 16.67  | 30 | 20 |
+| $\phi(i)$ | 16.67  | 30 | 43.33 |
 </div>
 
 The arrow signifies the order in which each client joins the coalition. Consider the
